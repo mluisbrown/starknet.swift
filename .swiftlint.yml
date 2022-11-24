@@ -1,3 +1,5 @@
 included:
   - Sources
   - Tests
+
+line_length: 140
