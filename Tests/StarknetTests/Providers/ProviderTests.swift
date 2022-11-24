@@ -6,7 +6,7 @@ final class ProviderTests: XCTestCase {
 
     /*
      Temporary test file, until DevnetClient utility is created.
-     
+
      To run, make sure you're running starknet-devnet on port 5050
      */
 

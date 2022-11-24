@@ -11,7 +11,7 @@ public struct Felt {
 
     public init?(_ value: BigUInt) {
         guard value < Felt.prime else {
-           return nil
+            return nil
         }
 
         self.value = value
@@ -69,5 +69,3 @@ extension Felt: CustomStringConvertible {
         return self.toHex()
     }
 }
-
-// TODO: Conform to UnsignedInteger protocol
