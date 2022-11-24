@@ -5,7 +5,7 @@ public enum StarknetBlockId {
         case latest
         case pending
     }
-    
+
     case hash(Felt)
     case number(Int)
     case tag(BlockTag)

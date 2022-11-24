@@ -4,7 +4,7 @@ import BigInt
 public enum StarknetChainId {
     case mainnet
     case testnet
-    
+
     public var feltValue: Felt {
         switch self {
         case .mainnet:

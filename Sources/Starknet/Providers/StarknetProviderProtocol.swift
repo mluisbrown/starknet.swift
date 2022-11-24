@@ -3,7 +3,7 @@ import Foundation
 /// Provider used to interact with the StakNet blockchain.
 public protocol StarknetProviderProtocol {
     var starknetChainId: StarknetChainId { get }
-    
+
     /// Call starknet contract.
     ///
     /// - Parameters
