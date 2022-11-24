@@ -1,25 +1,5 @@
 #!/bin/sh
 
-# Hook by Muhammad Abdul Subhan from this article
-# https://medium.com/@abdulsubhan/using-swiftlint-as-git-pre-push-hook-9eb0850907d7
-
-# Function to add files to Lint
-function addFilesToLint {
-    filename=""
-    count=$2
-    for item in $1
-    do
-      if [[ $item == *".swift"* ]]; then
-        filename+="$item"
-        export SCRIPT_INPUT_FILE_$count="$filename"
-        count=$((count + 1))
-        filename=""
-      else
-        filename+="$item "
-      fi
-    done
-}
-
 lint=$(which swiftlint)
 
 if [[ -e "${lint}" ]]; then
@@ -28,17 +8,7 @@ else
 	echo "SwiftLint not found. Please download from https://github.com/realm/SwiftLint"
 fi
 
-count=0
-# Getting files which are in commit and haven't been pushed yet
-targets=$(git diff --stat --cached  --name-only $(git for-each-ref --format='%(upstream:short)' $(git symbolic-ref -q HEAD)) | grep -F ".swift")
-
-addFilesToLint "${targets[0]}" $count
-
-export -p | grep SCRIPT_INPUT_FILE
-
-export SCRIPT_INPUT_FILE_COUNT=$count
-
-RESULT=$($lint lint --quiet --use-script-input-files)
+RESULT=$($lint lint --quiet)
 
 if [ "$RESULT" == '' ]; then
   printf "\e[32mSwiftLint Finished.\e[39m\n"
