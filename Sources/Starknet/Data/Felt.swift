@@ -63,7 +63,7 @@ extension Felt: Comparable {
         return lhs.value < rhs.value
     }
 }
-
+   
 extension Felt: CustomStringConvertible {
     public var description: String {
         return self.toHex()
